@@ -1,11 +1,12 @@
-import axios from "axios";
-import { useState } from "react";
-import { BASE_URL } from "../../constant";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../store/slices/user";
 import { useNavigate } from "react-router-dom";
+import apiInstance from "../../api/instance";
+import { API_CONSTANT } from "../../constant";
 
 const Login = () => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
@@ -21,15 +22,19 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(BASE_URL + "login", loginForm, {
-        withCredentials: true,
-      });
+      const response = await apiInstance.post(API_CONSTANT.login, loginForm);
       dispatch(addUser(response.data.data));
-      navigate("/feed");
+      navigate("/");
     } catch (error) {
       console.error(error, "Login Error");
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   return (
     <div className="w-full flex items-center justify-center">

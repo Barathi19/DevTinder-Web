@@ -1,7 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { API_CONSTANT, ROUTE_CONSTANT } from "../constant";
+import apiInstance from "../api/instance";
+import { removeUser } from "../store/slices/user";
 
 export const NavBar = () => {
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    try {
+      await apiInstance.post(API_CONSTANT.logout);
+      dispatch(removeUser());
+      navigate(ROUTE_CONSTANT.login);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="navbar bg-base-300 shadow-sm">
@@ -9,8 +25,8 @@ export const NavBar = () => {
         <a className="btn btn-ghost text-xl">🚀 DevTinder</a>
       </div>
       {user && (
-        <div className="flex gap-2 items-center mr-4">
-          <p>Welcome {user.firstName}!</p>
+        <div className="flex gap-3 items-center mr-4">
+          <p>Welcome, {user.firstName}!</p>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -32,16 +48,13 @@ export const NavBar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to={ROUTE_CONSTANT.profile}>Profile</Link>
               </li>
               <li>
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
           </div>
