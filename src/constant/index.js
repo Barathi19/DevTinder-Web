@@ -3,6 +3,8 @@ export const BASE_URL = "http://localhost:3000";
 export const ROUTE_CONSTANT = {
   login: "/login",
   profile: "/profile",
+  connections: "/connections",
+  requests: "/requests",
 };
 
 export const API_CONSTANT = {
@@ -11,4 +13,11 @@ export const API_CONSTANT = {
   updateProfile: "/profile",
   feed: "/user/feed",
   logout: "/logout",
+  getConnections: "/user/connections",
+  requestsRecieved: "/user/requests/received",
+  reviewRequest: "/request/review",
+  sendRequest: "/request/send",
 };
+
+export const DUMMY_IMG_URL =
+  "https://loudouncslcenter.com/wp-content/uploads/default-avatar-icon-of-social-media-user-vector.jpg";

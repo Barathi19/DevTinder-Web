@@ -1,14 +1,10 @@
+import { DUMMY_IMG_URL } from "../constant";
+
 const ProfileCard = ({ data }) => {
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
       <figure>
-        <img
-          src={
-            data.photoUrl ||
-            "https://loudouncslcenter.com/wp-content/uploads/default-avatar-icon-of-social-media-user-vector.jpg"
-          }
-          alt="user photo"
-        />
+        <img src={data.photoUrl || DUMMY_IMG_URL} alt="user photo" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">

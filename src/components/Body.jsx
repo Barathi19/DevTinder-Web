@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import { Footer } from "./Footer";
-import { NavBar } from "./NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import apiInstance from "../api/instance";
 import { API_CONSTANT } from "../constant";
 import { addUser } from "../store/slices/user";
 import { useCallback, useEffect } from "react";
+import { NavBar } from "./Navbar";
 
 export const Body = () => {
   const dispatch = useDispatch();
