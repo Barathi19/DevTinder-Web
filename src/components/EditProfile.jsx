@@ -99,7 +99,7 @@ export const EditProfile = ({ data }) => {
           </button>
         </fieldset>
       </form>
-      <ProfileCard data={profile} />
+      <ProfileCard data={profile} disableAction={true} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ export const ROUTE_CONSTANT = {
 
 export const API_CONSTANT = {
   login: "/login",
+  signUp: "/signup",
   viewProfile: "/profile/view",
   updateProfile: "/profile",
   feed: "/user/feed",

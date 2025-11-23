@@ -9,6 +9,8 @@ const Feed = () => {
   const dispatch = useDispatch();
   const feedData = useSelector((state) => state.feed);
 
+  console.log(feedData, "{");
+
   const fetchFeeds = useCallback(async () => {
     try {
       const response = await apiInstance.get(API_CONSTANT.feed);

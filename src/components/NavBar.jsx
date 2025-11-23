@@ -56,7 +56,7 @@ export const NavBar = () => {
                 <Link to={ROUTE_CONSTANT.requests}>Requests</Link>
               </li>
               <li>
-                <a onClick={handleLogout}>Logout</a>
+                <a onClick={() => handleLogout()}>Logout</a>
               </li>
             </ul>
           </div>
