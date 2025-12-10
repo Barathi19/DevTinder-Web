@@ -8,6 +8,7 @@ import Feed from "./pages/feed/Feed";
 import { ROUTE_CONSTANT } from "./constant";
 import Connections from "./pages/connections/Connections";
 import Requests from "./pages/requests/Requests";
+import { Chat } from "./pages/Chat/Chat";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               element={<Connections />}
             />
             <Route path={ROUTE_CONSTANT.requests} element={<Requests />} />
+            <Route path={ROUTE_CONSTANT.chat} element={<Chat />} />
           </Route>
         </Routes>
       </BrowserRouter>

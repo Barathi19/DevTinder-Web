@@ -1,10 +1,12 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import apiInstance from "../../api/instance";
-import { API_CONSTANT, DUMMY_IMG_URL } from "../../constant";
+import { API_CONSTANT, DUMMY_IMG_URL, ROUTE_CONSTANT } from "../../constant";
 import { addConnections } from "../../store/slices/connection";
+import { useNavigate } from "react-router-dom";
 
 const Connections = () => {
+  const navigate = useNavigate();
   const connectionList = useSelector((state) => state.connection);
   const dispatch = useDispatch();
 
@@ -43,7 +45,7 @@ const Connections = () => {
               src={connection.photoUrl || DUMMY_IMG_URL}
             />
           </div>
-          <div>
+          <div className="flex-1 mx-4">
             <b>
               {connection.firstName} {connection.lastName}
             </b>
@@ -54,6 +56,14 @@ const Connections = () => {
             )}
             {connection.about && <p>{connection.about}</p>}
           </div>
+          <button
+            className="btn btn-primary"
+            onClick={() =>
+              navigate(ROUTE_CONSTANT.chat.replace(":id", connection._id))
+            }
+          >
+            Chat
+          </button>
         </div>
       ))}
     </div>

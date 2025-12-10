@@ -5,6 +5,7 @@ export const ROUTE_CONSTANT = {
   profile: "/profile",
   connections: "/connections",
   requests: "/requests",
+  chat: "/chat/:id",
 };
 
 export const API_CONSTANT = {
@@ -18,6 +19,7 @@ export const API_CONSTANT = {
   requestsRecieved: "/user/requests/received",
   reviewRequest: "/request/review",
   sendRequest: "/request/send",
+  chat: "/chat",
 };
 
 export const DUMMY_IMG_URL =
